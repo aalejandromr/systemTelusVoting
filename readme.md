@@ -11,6 +11,34 @@
 
 Thanks for visiting me, follow the steps to install my voting system
 
+SYSTEM REQUIREMENTS
+
+[This system required php version 5.3 +]
+[This system required mysql version 5.7.17 +]
+
+-----------------------------------------------------------------------------
+
+
+Technology Used
+
+Laravel 5.3
+Composer 1.3.2
+macOS Sierra - Mac Booc Air
+AdminLTE
+Jquery
+css3
+Bootstrap
+HihgChar.js
+Ajax
+Json
+
+and 5 coffee shots per day.
+
+
+------------------------------------------------------------------------------
+
+
+
 RUN THE FOLLOWING COMMANDS AS LISTED
 
 1- git clone https://github.com/aalejandromr/systemTelusVoting.git
@@ -39,6 +67,9 @@ RUN THE FOLLOWING COMMANDS AS LISTED
 -------------------------------------------------------------------------------
 
 SYSTEM REQUIREMENTS AND OUTPUTS
+
+[This system required php version 5.3 > *]
+[This system required mysql version 5.7.17 > *]
 
 1- You can request the webservice with this link http://127.0.0.1:8000/services the system must be running and the port must be 8000 otherwise you can change to the port where the system is running
 
