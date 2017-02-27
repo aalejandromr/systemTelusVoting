@@ -25,7 +25,13 @@ class LoginController extends Controller
             $UTCDate->setTimeZone($newTZ);
             $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$UTCDate->format('Y-m-d'), $address_ip]);
             if($is_in[0]->counted == 0){
-                DB::table('visitors')->insert(["ip_address" => $address_ip ]);
+                DB::table('visitors')->insert(
+                    ["ip_address" => $address_ip],
+                    ["created_at" => $UTCDate->format('Y-m-d')]
+                    );
+            }
+            else {
+
             }
             $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE
                                         DATE(created_at) = DATE(now()) ORDER BY DATE(created_at)");
@@ -64,8 +70,7 @@ class LoginController extends Controller
     	} catch (ThrottlingException $e) {
     		$delay = $e->getDelay();
     		return redirect()
-                    ->back()
-                    ->with(['error' => 'You must wait for ' . $delay. ' seconds. ']);
+                ->back()->with(['error' => 'You must wait for ' . $delay. ' seconds. ']);
     	}
     	
     }

@@ -15,7 +15,7 @@ class AddRegisteredVisitors extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ip_address');
+            $table->string('ip_address');
             $table->timestamps();
         });
     }
