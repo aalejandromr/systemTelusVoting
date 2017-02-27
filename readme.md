@@ -35,3 +35,9 @@ RUN THE FOLLOWING COMMANDS AS LISTED
  to run the system
 
 11- Enjoy the system :)
+
+-------------------------------------------------------------------------------
+
+SYSTEM REQUIREDMENTS AND OUTPUTS
+
+1- You can request the webservice by this link http://127.0.0.1/services
