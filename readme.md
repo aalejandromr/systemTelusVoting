@@ -17,7 +17,7 @@ RUN THE FOLLOWING COMMANDS AS LISTED
 
 2- cd systemTelusVoting
 
-3- query the script call system_voting_schema.sql in your mysql manager or console
+3- query the script called system_voting_schema.sql in your mysql manager or console
 
 4- Change your database credentials, DB_DATABASE = online_voting_site, DB_USERNAME = your_databaseUser, DB_PASSWORD = your_userPassword in .env.example
 
