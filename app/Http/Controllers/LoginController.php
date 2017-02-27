@@ -17,22 +17,6 @@ class LoginController extends Controller
                             ->where('country_id', '=', Sentinel::getUser()->country_id)
                             ->get();
             //$departments = Sentinel::getUser()->country_id;
-            $address_ip = $_SERVER['REMOTE_ADDR'];
-            $UTC = new DateTimeZone("UTC");
-            $newTZ = new DateTimeZone("America/El_Salvador");
-            $date = date('Y-m-d');
-            $UTCDate = new DateTime($date, $UTC);
-            $UTCDate->setTimeZone($newTZ);
-            $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$UTCDate->format('Y-m-d'), $address_ip]);
-            if($is_in[0]->counted == 0){
-                DB::table('visitors')->insert(
-                    ["ip_address" => $address_ip],
-                    ["created_at" => $UTCDate->format('Y-m-d')]
-                    );
-            }
-            else {
-
-            }
             $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE
                                         DATE(created_at) = DATE(now()) ORDER BY DATE(created_at)");
             $txt = json_encode(DB::select('select DATE(visitors.created_at) AS the_date, COUNT(*) AS count 
@@ -52,6 +36,22 @@ class LoginController extends Controller
     	
     	try {
     		if(Sentinel::authenticate($request->all())){
+                $address_ip = $_SERVER['REMOTE_ADDR'];
+                $UTC = new DateTimeZone("UTC");
+                $newTZ = new DateTimeZone("America/El_Salvador");
+                $date = date('Y-m-d');
+                $UTCDate = new DateTime($date, $UTC);
+                $UTCDate->setTimeZone($newTZ);
+                $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$UTCDate->format('Y-m-d'), $address_ip]);
+                if($is_in[0]->counted == 0){
+                    DB::table('visitors')->insert(
+                        ["ip_address" => $address_ip],
+                        ["created_at" => $UTCDate->format('Y-m-d')]
+                        );
+                }
+                else {
+
+                }
             //$departments = DB::table('departments')->get();
             $departments = DB::table('departments')
                             ->where('country_id', '=', Sentinel::getUser()->country_id)
