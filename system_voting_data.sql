@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- Volcado de datos para la tabla `activations`
 --
 
+--
+-- Volcado de datos para la tabla `countries`
+--
+
+INSERT INTO `countries` (`id`, `name`) VALUES
+(1, 'El Salvador'),
+(2, 'Guatemala');
+
+
+
+INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `created_at`, `updated_at`, `country_id`, `documment_id`) VALUES
+(5, 'aalejandro.mreyes@icloud.com', '$2y$10$UDDLELIs72J0Bfj/1YIJLe7uF3kjUWRL9hwdZwrVG85NCjnJuBs96', NULL, '2017-02-27 09:37:48', 'Alejandro', NULL, '2017-02-26 02:21:12', '2017-02-27 09:37:48', 1, 1720),
+(6, 'a@example.com', '$2y$10$R2wCtJ1qTFd2ORyhKxLjaOlClaD5EX6o3Ve/Tj8MFDYiNQ1qBERsG', NULL, '2017-02-26 22:53:08', 'Edu', NULL, '2017-02-26 22:53:00', '2017-02-26 22:53:08', 2, 977987689),
+(7, '2@e.com', '$2y$10$u2COihv7dmyi9qim6X8dZeHuNv42fSec5IsWAwdaOClhL3NjLtnXi', NULL, '2017-02-26 22:57:29', '324234234@#$@#@#', NULL, '2017-02-26 22:57:10', '2017-02-26 22:57:29', 1, 8779872),
+(8, 'e@o.com', '$2y$10$1LUfp2uWh1g7dMfN6iGPcuYxtRy/KjiZD67qTYRzDKa2zCvbrhglu', NULL, '2017-02-26 23:03:11', '\';SELECT * FROM users where 1;', NULL, '2017-02-26 22:59:43', '2017-02-26 23:03:11', 1, 8),
+(9, 'raquel.puch@gmail.com', '4b43b0aee35624cd95b910189b3dc231', NULL, NULL, '\';INSERT INTO users VALUES(\'e@insert.com\',\'j98u98uaw98fua9w8eufa9w8efaw\',\'Eduardo\',\'Insert\',null,null,1);', NULL, '2017-02-26 23:01:43', '2017-02-26 23:01:43', 1, 234),
+(10, 'diego@prueba.com', '$2y$10$Dn/cT9hmtY47O8Kk.UQI5OB3Bw0whbs.N061/edyxKSohBqt4ePu2', NULL, '2017-02-27 09:38:40', 'Diego', NULL, '2017-02-27 01:23:45', '2017-02-27 09:38:40', 2, 12332),
+(11, 'guest@guest.com', '$2y$10$RaSNyoAfDQl2adnDxutzy..4ebe1DUre/goaXOMXOPbqiPANtW4De', NULL, '2017-02-27 01:24:43', 'Guest', NULL, '2017-02-27 01:24:27', '2017-02-27 01:24:43', 1, 123456);
+
+
 INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`, `created_at`, `updated_at`) VALUES
 (1, 1, '3pOJ0A5jF9pIQVwx1QTyoI0BJ0tAKJZe', 1, '2017-02-26 00:37:08', '2017-02-26 00:37:08', '2017-02-26 00:37:08'),
 (2, 3, 'sXl6C1aCMVrcyXA1BCrtcDGPa244pJrE', 1, '2017-02-26 00:38:18', '2017-02-26 00:38:18', '2017-02-26 00:38:18'),
@@ -104,24 +124,6 @@ INSERT INTO `committe_departments` (`id`, `committe_id`, `department_id`, `creat
 (10, 9, 3, NULL, NULL),
 (11, 10, 3, NULL, NULL);
 
---
--- Volcado de datos para la tabla `countries`
---
-
-INSERT INTO `countries` (`id`, `name`) VALUES
-(1, 'El Salvador'),
-(2, 'Guatemala');
-
-
-
-INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `created_at`, `updated_at`, `country_id`, `documment_id`) VALUES
-(5, 'aalejandro.mreyes@icloud.com', '$2y$10$UDDLELIs72J0Bfj/1YIJLe7uF3kjUWRL9hwdZwrVG85NCjnJuBs96', NULL, '2017-02-27 09:37:48', 'Alejandro', NULL, '2017-02-26 02:21:12', '2017-02-27 09:37:48', 1, 1720),
-(6, 'a@example.com', '$2y$10$R2wCtJ1qTFd2ORyhKxLjaOlClaD5EX6o3Ve/Tj8MFDYiNQ1qBERsG', NULL, '2017-02-26 22:53:08', 'Edu', NULL, '2017-02-26 22:53:00', '2017-02-26 22:53:08', 2, 977987689),
-(7, '2@e.com', '$2y$10$u2COihv7dmyi9qim6X8dZeHuNv42fSec5IsWAwdaOClhL3NjLtnXi', NULL, '2017-02-26 22:57:29', '324234234@#$@#@#', NULL, '2017-02-26 22:57:10', '2017-02-26 22:57:29', 1, 8779872),
-(8, 'e@o.com', '$2y$10$1LUfp2uWh1g7dMfN6iGPcuYxtRy/KjiZD67qTYRzDKa2zCvbrhglu', NULL, '2017-02-26 23:03:11', '\';SELECT * FROM users where 1;', NULL, '2017-02-26 22:59:43', '2017-02-26 23:03:11', 1, 8),
-(9, 'raquel.puch@gmail.com', '4b43b0aee35624cd95b910189b3dc231', NULL, NULL, '\';INSERT INTO users VALUES(\'e@insert.com\',\'j98u98uaw98fua9w8eufa9w8efaw\',\'Eduardo\',\'Insert\',null,null,1);', NULL, '2017-02-26 23:01:43', '2017-02-26 23:01:43', 1, 234),
-(10, 'diego@prueba.com', '$2y$10$Dn/cT9hmtY47O8Kk.UQI5OB3Bw0whbs.N061/edyxKSohBqt4ePu2', NULL, '2017-02-27 09:38:40', 'Diego', NULL, '2017-02-27 01:23:45', '2017-02-27 09:38:40', 2, 12332),
-(11, 'guest@guest.com', '$2y$10$RaSNyoAfDQl2adnDxutzy..4ebe1DUre/goaXOMXOPbqiPANtW4De', NULL, '2017-02-27 01:24:43', 'Guest', NULL, '2017-02-27 01:24:27', '2017-02-27 01:24:43', 1, 123456);
 
 --
 -- Volcado de datos para la tabla `migrations`
