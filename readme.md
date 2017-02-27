@@ -40,7 +40,7 @@ RUN THE FOLLOWING COMMANDS AS LISTED
 
 SYSTEM REQUIREDMENTS AND OUTPUTS
 
-1- You can request the webservice by this link http://127.0.0.1:8000/services the system must be running and the purst must be 8000 otherwise you can change to the port where the system is running
+1- You can request the webservice with this link http://127.0.0.1:8000/services the system must be running and the port must be 8000 otherwise you can change to the port where the system is running
 
 2- The report to view the data in the applications is in the link "How votes goes?"
 
@@ -48,4 +48,4 @@ SYSTEM REQUIREDMENTS AND OUTPUTS
 
 4- The data base scripts are called system_voting_schema.sql and system_voting_data.sql and are located in the root system
 
-5- The visitor count file will create after your sign in, and you can see it in /public/visitors.txt
+5- The visitor count file will be created after your sign in, and you can see it in /public/visitors.txt
