@@ -40,4 +40,12 @@ RUN THE FOLLOWING COMMANDS AS LISTED
 
 SYSTEM REQUIREDMENTS AND OUTPUTS
 
-1- You can request the webservice by this link http://127.0.0.1:8000/services
+1- You can request the webservice by this link http://127.0.0.1:8000/services the system must be running and the purst must be 8000 otherwise you can change to the port where the system is running
+
+2- The report to view the data in the applications is in the link "How votes goes?"
+
+3- The entity diagram is https://github.com/aalejandromr/systemTelusVoting/blob/master/database/17015179_786570588158145_1388516740_o.png
+
+4- The data base scripts are called system_voting_schema.sql and system_voting_data.sql and are located in the root system
+
+5- The visitor count file will create after your sign in, and you can see it in /public/visitors.txt
