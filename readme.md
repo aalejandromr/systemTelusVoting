@@ -27,8 +27,11 @@ RUN THE FOLLOWING COMMANDS AS LISTED
 
 7- run the command, php artisan migrate
 
-8- query the script call system_voting_data.sql
+8- query the script called system_voting_data.sql
 
 9- run the command, php artisan key:generate
 
-10- Enjoy the system :)
+10- run the command, php artisan serve
+ to run the system
+
+11- Enjoy the system :)
