@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use DB;
 
 class AddRegisteredVisitors extends Migration
 {
@@ -17,7 +16,7 @@ class AddRegisteredVisitors extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ip_address');
-            $table->timestamps()->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 
