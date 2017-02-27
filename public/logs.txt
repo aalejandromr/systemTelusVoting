@@ -1,3 +1,0 @@
-user id date
-[{"the_date":"2017-02-26","count":2},{"the_date":"2017-03-26","count":1}]
-[{"the_date":"2017-02-26","count":2},{"the_date":"2017-03-26","count":1}]
