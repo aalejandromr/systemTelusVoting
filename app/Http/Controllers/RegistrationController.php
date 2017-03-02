@@ -24,6 +24,7 @@ class RegistrationController extends Controller
         }
         else
         {
+            //dd($request);
             $user = Sentinel::registerAndActivate($request->all());
             return redirect('/');
         }

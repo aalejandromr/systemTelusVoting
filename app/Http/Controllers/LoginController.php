@@ -18,7 +18,7 @@ class LoginController extends Controller
                             ->get();
             //$departments = Sentinel::getUser()->country_id;
             $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE
-                                        DATE(created_at) = DATE(now()) ORDER BY DATE(created_at)");
+                                        DATE(created_at) = DATE(now()) GROUP BY DATE(created_at)");
             $txt = json_encode(DB::select('select DATE(visitors.created_at) AS the_date, COUNT(*) AS count 
                                             FROM visitors WHERE visitors.created_at BETWEEN DATE("2016-11-28") 
                                             AND DATE("2019-12-05") GROUP BY the_date'));
@@ -40,9 +40,11 @@ class LoginController extends Controller
                 $UTC = new DateTimeZone("UTC");
                 $newTZ = new DateTimeZone("America/El_Salvador");
                 $date = date('Y-m-d');
+                //dd($date);
                 $UTCDate = new DateTime($date, $UTC);
                 $UTCDate->setTimeZone($newTZ);
-                $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$UTCDate->format('Y-m-d'), $address_ip]);
+                //dd($UTCDate->format('Y-m-d'));
+                $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$date, $address_ip]);
                 if($is_in[0]->counted == 0){
                     DB::table('visitors')->insert(
                         ["ip_address" => $address_ip],
@@ -56,7 +58,7 @@ class LoginController extends Controller
             $departments = DB::table('departments')
                             ->where('country_id', '=', Sentinel::getUser()->country_id)
                             ->get();
-            $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE DATE(created_at) = DATE(now()) ORDER BY DATE(created_at)");
+            $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE DATE(created_at) = DATE(now()) GROUP BY DATE(created_at)");
             //$departments = Sentinel::getUser()->country_id;
             return View::make('votes.dashboard')
                             ->with(compact('departments'))

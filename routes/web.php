@@ -30,7 +30,7 @@ Route::post('/vote', 'VoteController@voting');
 
 Route::get('/graphics/{id}', 'VoteController@graphics_find');
 
-Route::post('/makeGraphic/{id}', 'VoteController@make_graphic');
+Route::post('/makeGraphic/', 'VoteController@make_graphic');
 
 Route::get('/services', 'Service@service');
 

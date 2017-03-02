@@ -11,8 +11,9 @@
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
       });
-    $.post("/makeGraphic/{{Sentinel::getUser()->country_id}}").done(function(alldata){
-        Highcharts.chart('container', {
+    $.post("/makeGraphic/").done(function(alldata){
+        console.log(alldata);
+        /*Highcharts.chart('container', {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -43,7 +44,9 @@
         colorByPoint: true,
         data: alldata
     }]
-       });
-    }, "json");
+       });*/
+    }, "json").fail(function(data) {
+                
+            });;
   </script>
 @endsection

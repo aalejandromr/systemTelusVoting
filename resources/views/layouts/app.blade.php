@@ -77,6 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             });
             $.post("/getVisitors").done(function(data){
                 $("p.append-here").append( "<strong> " + data[0].today_visitors + " </strong>" );
+                console.log(data);
             }, "json").fail(function(data) {
                 console.log(data);
             });

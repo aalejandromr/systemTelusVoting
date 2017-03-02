@@ -51,8 +51,9 @@ class VoteController extends Controller
                             ->join("departments", "votes.department_id", "=", "departments.id")
                             ->join("countries", "departments.country_id", "=", "countries.id")
                             ->select(DB::raw('count(*) as Votos, departments.name'))
-                            ->where('countries.id', '=', 1)
+                            ->where('countries.id', '=', $id)
                             ->groupBy('votes.department_id')
+                            ->groupBy('departments.name')
                             ->get();
             return view("votes.graphic",["data" => $great_query]);
         }
@@ -61,24 +62,29 @@ class VoteController extends Controller
         }
     }
 
-    public function make_graphic($country_id){
+    public function make_graphic(){
+        $country_id = Sentinel::getUser()->country_id;
         if(Sentinel::check()){
+
             $great_query = json_decode(DB::table("votes")
                                     ->join("departments", "votes.department_id", "=", "departments.id")
                                     ->join("countries", "departments.country_id", "=", "countries.id")
                                     ->select(DB::raw('departments.name, count(*) as y'))
                                     ->where('countries.id', '=', $country_id)
-                                    ->groupBy('votes.department_id')->get());
+                                    ->groupBy('votes.department_id')
+                                    ->groupBy('departments.name')
+                                    ->get());
         return $great_query;
         }
         else {
             return view('auth.login');  
         }
+
     }
 
     public function get_visitors(){
         $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE
-                                        DATE(created_at) = DATE(now()) ORDER BY DATE(created_at)");
+                                        DATE(created_at) = DATE(now()) GROUP BY DATE(created_at)");
         return $today_visitor;
     }
 }
