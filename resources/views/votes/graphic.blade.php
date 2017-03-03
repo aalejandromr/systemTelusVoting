@@ -13,7 +13,7 @@
       });
     $.post("/makeGraphic/").done(function(alldata){
         console.log(alldata);
-        /*Highcharts.chart('container', {
+        Highcharts.chart('container', {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -44,7 +44,7 @@
         colorByPoint: true,
         data: alldata
     }]
-       });*/
+       });
     }, "json").fail(function(data) {
                 
             });;

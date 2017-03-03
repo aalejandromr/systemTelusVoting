@@ -32,6 +32,8 @@ Route::get('/graphics/{id}', 'VoteController@graphics_find');
 
 Route::post('/makeGraphic/', 'VoteController@make_graphic');
 
+Route::get('/makeGraphic/', 'VoteController@make_graphic');
+
 Route::get('/services', 'Service@service');
 
 Route::post('/getVisitors', 'VoteController@get_visitors');

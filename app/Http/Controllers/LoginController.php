@@ -17,15 +17,10 @@ class LoginController extends Controller
                             ->where('country_id', '=', Sentinel::getUser()->country_id)
                             ->get();
             //$departments = Sentinel::getUser()->country_id;
-            $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE
-                                        DATE(created_at) = DATE(now()) GROUP BY DATE(created_at)");
-            $txt = json_encode(DB::select('select DATE(visitors.created_at) AS the_date, COUNT(*) AS count 
-                                            FROM visitors WHERE visitors.created_at BETWEEN DATE("2016-11-28") 
-                                            AND DATE("2019-12-05") GROUP BY the_date'));
-            $myfile = file_put_contents( public_path() . '/visitors.txt', $txt.PHP_EOL);
+            
             return View::make('votes.dashboard')
                         ->with(compact('departments'))
-                        ->with(compact('today_visitor'));
+                        ->with(compact('today_visitor'));     
     	}
     	else {
     		return view('auth.login');	
@@ -41,10 +36,18 @@ class LoginController extends Controller
                 $newTZ = new DateTimeZone("America/El_Salvador");
                 $date = date('Y-m-d');
                 //dd($date);
+                $today_visitor = DB::select("select count(ip_address) as today_visitors FROM `visitors` WHERE
+                                        DATE(created_at) = DATE(now()) GROUP BY DATE(created_at)");
+                $txt = json_encode(DB::select('select DATE(visitors.created_at) AS the_date, COUNT(*) AS count 
+                                                FROM visitors WHERE visitors.created_at BETWEEN DATE("2016-11-28") 
+                                            AND DATE("2019-12-05") GROUP BY the_date'));
+
+                $myfile = file_put_contents( public_path() . '/visitors.txt', $txt.PHP_EOL);
+
+
                 $UTCDate = new DateTime($date, $UTC);
                 $UTCDate->setTimeZone($newTZ);
-                //dd($UTCDate->format('Y-m-d'));
-                $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$date, $address_ip]);
+                $is_in = DB::select("select count(ip_address) as counted FROM `visitors` where DATE(created_at) = ? and ip_address = ?", [$UTCDate->format('Y-m-d'), $address_ip]);
                 if($is_in[0]->counted == 0){
                     DB::table('visitors')->insert(
                         ["ip_address" => $address_ip],
